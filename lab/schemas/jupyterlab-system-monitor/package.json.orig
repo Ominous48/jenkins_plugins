@@ -1,0 +1,60 @@
+{
+  "name": "jupyterlab-system-monitor",
+  "version": "0.6.0",
+  "description": "JupyterLab extension to display system information",
+  "keywords": [
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension"
+  ],
+  "homepage": "https://github.com/jtpio/jupyterlab-system-monitor",
+  "bugs": {
+    "url": "https://github.com/jtpio/jupyterlab-system-monitor/issues"
+  },
+  "license": "BSD-3-Clause",
+  "author": "Jeremy Tuloup",
+  "files": [
+    "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
+    "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}",
+    "schema/*.json"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jtpio/jupyterlab-system-monitor.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "link": "jupyter labextension link . --no-build",
+    "clean": "rimraf lib && rimraf tsconfig.tsbuildinfo",
+    "prepare": "npm run clean && npm run build",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@jupyterlab/application": "^2.0.0",
+    "@jupyterlab/statusbar": "^2.0.0",
+    "@jupyterlab/settingregistry": "^2.0.0",
+    "jupyterlab-topbar": "^0.5.0",
+    "jupyterlab-system-monitor-base": "^0.6.0"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "typescript": "~3.8.1"
+  },
+  "jupyterlab": {
+    "extension": true,
+    "schemaDir": "schema",
+    "discovery": {
+      "server": {
+        "managers": [
+          "pip",
+          "conda"
+        ],
+        "base": {
+          "name": "nbresuse"
+        }
+      }
+    }
+  }
+}
